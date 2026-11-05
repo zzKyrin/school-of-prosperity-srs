@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School of Prosperity | SRS</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      color: #243047;
+    }
+    header {
+      background: #142b4a;
+      color: white;
+      padding: 22px 7%;
+    }
+    header h1 { margin: 0; font-size: 24px; }
+    header p { margin: 6px 0 0; color: #d5deea; }
+    main {
+      max-width: 1100px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+    .welcome {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 3px 14px #142b4a12;
+    }
+    .welcome h2 { margin-top: 0; color: #142b4a; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #e3e8f0;
+    }
+    .card h3 { color: #142b4a; }
+    .card p { color: #66748a; line-height: 1.5; }
+    .button {
+      display: inline-block;
+      background: #245ca6;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 7px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #718096;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>School of Prosperity</h1>
+    <p>Student Records System (SRS)</p>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Welcome to the Student Records System</h2>
+      <p>
+        The School of Prosperity Student Records System
+        provides students and staff with convenient access
+        to academic information and school services.
+      </p>
+      <p>
+        Manage student records, browse courses, register
+        for classes, and access academic grades.
+      </p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Student Portal</h3>
+        <p>Access course registration, class schedules,
+        student information, and grades.</p>
+        <a class="button" href="#">Student Login</a>
+      </div>
+
+      <div class="card">
+        <h3>Staff Portal</h3>
+        <p>Manage student records, courses, classes,
+        registrations, and academic grades.</p>
+        <a class="button" href="#">Staff Login</a>
+      </div>
+
+      <div class="card">
+        <h3>Course Information</h3>
+        <p>Explore the courses and class offerings
+        available at the School of Prosperity.</p>
+        <a class="button" href="#">View Courses</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    School of Prosperity | Student Records System
+    <br>
+    Academic Information Management
+  </footer>
+
+</body>
+</html>
