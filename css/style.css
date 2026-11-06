@@ -229,3 +229,50 @@ footer {
         font-size: 13px;
     }
 }
+
+/* =================================
+   ACADEMIC RECORDS TABLE
+================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    text-align: left;
+}
+
+.records-table th {
+    background-color: #142b4a;
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.records-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e3e8f0;
+    color: #243047;
+    font-size: 14px;
+}
+
+.records-table tbody tr:hover {
+    background-color: #f3f5f9;
+}
+
+.records-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Mobile Table */
+
+@media (max-width: 600px) {
+    .records-table {
+        min-width: 600px;
+    }
+}
