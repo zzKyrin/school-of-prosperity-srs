@@ -1,1 +1,123 @@
 
+/* =================================
+   SCHOOL OF PROSPERITY SRS
+   Main Website Styles
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f5f9;
+    color: #243047;
+}
+
+/* Header */
+
+header {
+    background-color: #142b4a;
+    color: white;
+    padding: 22px 7%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header p {
+    margin: 6px 0 0;
+    color: #d5deea;
+}
+
+/* Main Content */
+
+main {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+/* Welcome Section */
+
+.welcome {
+    background-color: white;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 3px 14px #142b4a12;
+}
+
+.welcome h2 {
+    margin-top: 0;
+    color: #142b4a;
+}
+
+/* Dashboard Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e3e8f0;
+}
+
+.card h3 {
+    color: #142b4a;
+}
+
+.card p {
+    color: #66748a;
+    line-height: 1.5;
+}
+
+/* Buttons */
+
+.button {
+    display: inline-block;
+    background-color: #245ca6;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #173f78;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #718096;
+}
+
+/* Mobile Responsiveness */
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px;
+    }
+
+    main {
+        margin: 25px auto;
+    }
+
+    .welcome {
+        padding: 22px;
+    }
+}
+
