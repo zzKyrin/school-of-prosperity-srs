@@ -193,3 +193,39 @@ footer {
         padding: 25px;
     }
 }
+
+/* =================================
+   STUDENT DASHBOARD NAVIGATION
+================================= */
+
+.dashboard-nav {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.dashboard-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+.dashboard-nav a:hover {
+    color: #a9cfff;
+    text-decoration: underline;
+}
+
+/* Mobile Navigation */
+
+@media (max-width: 600px) {
+    .dashboard-nav {
+        gap: 15px;
+    }
+
+    .dashboard-nav a {
+        font-size: 13px;
+    }
+}
