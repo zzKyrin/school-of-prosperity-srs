@@ -43,3 +43,39 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const gpaDisplay = document.getElementById("gpa-value");
+
+    if (!gpaDisplay) return;
+
+    const gradePoints = {
+        A: 4.0,
+        B: 3.0,
+        C: 2.0,
+        D: 1.0,
+        F: 0.0
+    };
+
+    const rows = document.querySelectorAll(".records-table tbody tr");
+
+    let totalPoints = 0;
+    let totalCredits = 0;
+
+    rows.forEach(function (row) {
+        const credits = Number(row.cells[2].textContent);
+        const grade = row.cells[3].textContent.trim();
+
+        if (gradePoints[grade] !== undefined && credits > 0) {
+            totalPoints += gradePoints[grade] * credits;
+            totalCredits += credits;
+        }
+    });
+
+    if (totalCredits > 0) {
+        const gpa = totalPoints / totalCredits;
+        gpaDisplay.textContent = gpa.toFixed(2);
+    } else {
+        gpaDisplay.textContent = "N/A";
+    }
+});
