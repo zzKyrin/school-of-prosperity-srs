@@ -11,14 +11,23 @@
 
 <body>
 
-    <header>
-        <h1>School of Prosperity</h1>
-        <p>Student Records System</p>
-    </header>
+
+<header>
+    <h1>School of Prosperity</h1>
+    <p>Student Records System</p>
+
+    <nav class="dashboard-nav">
+        <a href="#overview">Overview</a>
+        <a href="#courses">My Courses</a>
+        <a href="#student-info">My Information</a>
+        <a href="index.html">Sign Out</a>
+    </nav>
+</header>
+
 
     <main>
 
-        <section class="welcome">
+        <section class="welcome" id="overview">
             <h2>Student Dashboard</h2>
             <p>Welcome back, Jordan Williams!</p>
             <p>Here you can view your academic information,
@@ -27,7 +36,7 @@
 
         <section class="cards">
 
-            <div class="card">
+            <div class="card" id="student-info">
                 <h3>Student Information</h3>
                 <p><strong>Student ID:</strong> 100245</p>
                 <p><strong>Program:</strong> Business Administration</p>
@@ -47,7 +56,7 @@
 
         </section>
 
-        <section class="welcome">
+        <section class="welcome" id="courses">
             <h2>My Courses</h2>
 
             <div class="cards">
