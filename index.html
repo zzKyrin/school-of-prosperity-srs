@@ -7,56 +7,48 @@
   <title>School of Prosperity | SRS</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <header>
-    <h1>School of Prosperity</h1>
-    <p>Student Records System (SRS)</p>
-  </header>
+    <header>
+        <h1>School of Prosperity</h1>
+        <p>Student Records System</p>
+    </header>
 
-  <main>
-    <section class="welcome">
-      <h2>Welcome to the Student Records System</h2>
-      <p>
-        The School of Prosperity Student Records System
-        provides students and staff with convenient access
-        to academic information and school services.
-      </p>
-      <p>
-        Manage student records, browse courses, register
-        for classes, and access academic grades.
-      </p>
-    </section>
+    <main>
+        <section class="login-card">
 
-    <section class="cards">
-      <div class="card">
-        <h3>Student Portal</h3>
-        <p>Access course registration, class schedules,
-        student information, and grades.</p>
-        <a class="button" href="#">Student Login</a>
-      </div>
+            <h2>Welcome Back</h2>
+            <p>Please sign in to access your account.</p>
 
-      <div class="card">
-        <h3>Staff Portal</h3>
-        <p>Manage student records, courses, classes,
-        registrations, and academic grades.</p>
-        <a class="button" href="#">Staff Login</a>
-      </div>
+            <form>
+                <label for="userID">Student or Staff ID</label>
+                <input
+                    type="text"
+                    id="userID"
+                    placeholder="Enter your ID"
+                    required
+                >
 
-      <div class="card">
-        <h3>Course Information</h3>
-        <p>Explore the courses and class offerings
-        available at the School of Prosperity.</p>
-        <a class="button" href="#">View Courses</a>
-      </div>
-    </section>
-  </main>
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
 
-  <footer>
-    School of Prosperity | Student Records System
-    <br>
-    Academic Information Management
-  </footer>
+                <button type="submit" class="button">
+                    Sign In
+                </button>
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        School of Prosperity | Student Records System
+    </footer>
 
 </body>
 </html>
