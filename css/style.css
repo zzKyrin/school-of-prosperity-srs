@@ -276,3 +276,41 @@ footer {
         min-width: 600px;
     }
 }
+
+/* =================================
+   ACADEMIC PROGRESS
+================================= */
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #243047;
+}
+
+.progress-info strong {
+    color: #142b4a;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background-color: #e3e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 10%;
+    height: 100%;
+    background-color: #2d8a62;
+    border-radius: 20px;
+}
+
+#academic-progress > p:last-child {
+    margin-top: 12px;
+    color: #64748b;
+    font-size: 14px;
+}
