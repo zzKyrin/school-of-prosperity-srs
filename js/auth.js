@@ -79,3 +79,38 @@ document.addEventListener("DOMContentLoaded", function () {
         gpaDisplay.textContent = "N/A";
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll(".records-table tbody tr");
+
+    const creditsDisplay = document.getElementById("credits-completed");
+    const progressFill = document.getElementById("progress-fill");
+    const percentageDisplay = document.getElementById("progress-percentage");
+
+    if (!creditsDisplay || !progressFill || !percentageDisplay) return;
+
+    const totalDegreeCredits = 120;
+    let completedCredits = 0;
+
+    rows.forEach(function (row) {
+        const credits = Number(row.cells[2].textContent);
+        const status = row.cells[4].textContent.trim().toLowerCase();
+
+        if (status === "completed" && credits > 0) {
+            completedCredits += credits;
+        }
+    });
+
+    const percentage = Math.min(
+        (completedCredits / totalDegreeCredits) * 100,
+        100
+    );
+
+    creditsDisplay.textContent =
+        completedCredits + " / " + totalDegreeCredits;
+
+    progressFill.style.width = percentage + "%";
+
+    percentageDisplay.textContent =
+        percentage.toFixed(0) + "% of your degree completed";
+});
