@@ -319,3 +319,20 @@ footer {
     color: #64748b;
     font-size: 14px;
 }
+
+/* =================================
+   STUDENT PROFILE DETAILS
+================================= */
+
+#student-info p {
+    margin: 12px 0;
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+#student-info p strong {
+    color: #142b4a;
+    display: inline-block;
+    min-width: 155px;
+}
