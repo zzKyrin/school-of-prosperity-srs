@@ -114,3 +114,24 @@ document.addEventListener("DOMContentLoaded", function () {
     percentageDisplay.textContent =
         percentage.toFixed(0) + "% of your degree completed";
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("student-search");
+    const studentRecords = document.querySelectorAll(".student-record");
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", function () {
+        const searchValue = searchInput.value.toLowerCase().trim();
+
+        studentRecords.forEach(function (record) {
+            const studentInfo = record.textContent.toLowerCase();
+
+            if (studentInfo.includes(searchValue)) {
+                record.style.display = "";
+            } else {
+                record.style.display = "none";
+            }
+        });
+    });
+});
