@@ -165,3 +165,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     searchInput.addEventListener("input", filterStudents);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const viewButtons = document.querySelectorAll(".view-student");
+    const detailsPanel = document.getElementById("student-details");
+    const detailsContent = document.getElementById("student-details-content");
+    const closeButton = document.getElementById("close-details");
+
+    if (!detailsPanel || !detailsContent || !closeButton) return;
+
+    viewButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const studentCard = button.closest(".student-record");
+
+            if (!studentCard) return;
+
+            const studentInfo = studentCard.cloneNode(true);
+            const detailsButton = studentInfo.querySelector(".view-student");
+
+            if (detailsButton) {
+                detailsButton.remove();
+            }
+
+            detailsContent.textContent = studentInfo.textContent.trim();
+            detailsPanel.style.display = "block";
+
+            detailsPanel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+    closeButton.addEventListener("click", function () {
+        detailsPanel.style.display = "none";
+    });
+});
