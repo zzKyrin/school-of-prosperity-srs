@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.addEventListener("input", filterStudents);
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const viewButtons = document.querySelectorAll(".view-student");
     const detailsPanel = document.getElementById("student-details");
@@ -178,18 +179,22 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             const studentCard = button.closest(".student-record");
 
-            if (!studentCard) return;
-
-            const studentInfo = studentCard.cloneNode(true);
-            const detailsButton = studentInfo.querySelector(".view-student");
-
-            if (detailsButton) {
-                detailsButton.remove();
+            if (!studentCard) {
+                alert("Student record could not be found.");
+                return;
             }
 
-            detailsContent.textContent = studentInfo.textContent.trim();
-            detailsPanel.style.display = "block";
+            const studentName = studentCard.querySelector("h3").textContent;
+            const studentInfo = studentCard.querySelectorAll("p");
 
+            detailsContent.innerHTML = `
+                <h3>${studentName}</h3>
+                ${Array.from(studentInfo).map(function (item) {
+                    return `<p>${item.textContent}</p>`;
+                }).join("")}
+            `;
+
+            detailsPanel.style.display = "block";
             detailsPanel.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
@@ -201,3 +206,4 @@ document.addEventListener("DOMContentLoaded", function () {
         detailsPanel.style.display = "none";
     });
 });
+
