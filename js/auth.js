@@ -207,3 +207,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const editButton = document.getElementById("edit-student");
+    const editForm = document.getElementById("edit-student-form");
+    const detailsContent = document.getElementById("student-details-content");
+
+    if (!editButton || !editForm || !detailsContent) return;
+
+    editButton.addEventListener("click", function () {
+        const studentCard = document.querySelector(
+            ".student-record:has(h3)"
+        );
+
+        editForm.style.display = "block";
+    });
+});
