@@ -336,3 +336,34 @@ footer {
     display: inline-block;
     min-width: 155px;
 }
+
+/* =================================
+   STUDENT DETAILS PANEL
+================================= */
+
+#student-details {
+    margin-top: 25px;
+    border-left: 5px solid #2d8a62;
+    padding: 25px;
+}
+
+#student-details h2 {
+    color: #142b4a;
+    margin-bottom: 20px;
+}
+
+#student-details h3 {
+    color: #2d8a62;
+    margin-bottom: 15px;
+}
+
+#student-details p {
+    color: #475569;
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+#student-details button {
+    margin-top: 15px;
+}
