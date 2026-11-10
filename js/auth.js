@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const editButton = document.getElementById("edit-student");
     const editForm = document.getElementById("edit-student-form");
@@ -216,18 +217,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!editButton || !editForm || !detailsContent) return;
 
     editButton.addEventListener("click", function () {
-        const studentName = detailsContent.querySelector("h3").textContent;
+        const studentName = detailsContent.querySelector("h3");
         const studentInfo = detailsContent.querySelectorAll("p");
 
-        document.getElementById("edit-name").value = studentName;
-        document.getElementById("edit-id").value =
-            studentInfo[0].textContent.replace("Student ID: ", "");
-        document.getElementById("edit-program").value =
-            studentInfo[1].textContent.replace("Program: ", "");
-        document.getElementById("edit-gpa").value =
-            studentInfo[2].textContent.replace("GPA: ", "");
-        document.getElementById("edit-status").value =
-            studentInfo[3].textContent.replace("Status: ", "");
+        if (!studentName || studentInfo.length < 4) {
+            alert("Student information could not be loaded.");
+            return;
+        }
+
+        document.getElementById("edit-name").value = studentName.textContent.trim();
+        document.getElementById("edit-id").value = studentInfo[0].textContent.replace("Student ID: ", "").trim();
+        document.getElementById("edit-program").value = studentInfo[1].textContent.replace("Program: ", "").trim();
+        document.getElementById("edit-gpa").value = studentInfo[2].textContent.replace("GPA: ", "").trim();
+        document.getElementById("edit-status").value = studentInfo[3].textContent.replace("Status: ", "").trim();
 
         editForm.style.display = "block";
     });
