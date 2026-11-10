@@ -138,16 +138,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("student-search");
-    const clearButton = document.getElementById("clear-search");
     const studentRecords = document.querySelectorAll(".student-record");
+    const noResults = document.getElementById("no-results");
 
-    if (!searchInput || !clearButton) return;
+    if (!searchInput) return;
 
-    clearButton.addEventListener("click", function () {
-        searchInput.value = "";
+    function filterStudents() {
+        const searchValue = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
 
         studentRecords.forEach(function (record) {
-            record.style.display = "";
+            const studentInfo = record.textContent.toLowerCase();
+
+            if (studentInfo.includes(searchValue)) {
+                record.style.display = "";
+                visibleCount++;
+            } else {
+                record.style.display = "none";
+            }
         });
-    });
+
+        if (noResults) {
+            noResults.style.display = visibleCount === 0 ? "block" : "none";
+        }
+    }
+
+    searchInput.addEventListener("input", filterStudents);
 });
