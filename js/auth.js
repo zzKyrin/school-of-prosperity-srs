@@ -135,3 +135,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("student-search");
+    const clearButton = document.getElementById("clear-search");
+    const studentRecords = document.querySelectorAll(".student-record");
+
+    if (!searchInput || !clearButton) return;
+
+    clearButton.addEventListener("click", function () {
+        searchInput.value = "";
+
+        studentRecords.forEach(function (record) {
+            record.style.display = "";
+        });
+    });
+});
