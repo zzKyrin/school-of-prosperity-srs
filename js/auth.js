@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const editButton = document.getElementById("edit-student");
     const editForm = document.getElementById("edit-student-form");
@@ -215,9 +216,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!editButton || !editForm || !detailsContent) return;
 
     editButton.addEventListener("click", function () {
-        const studentCard = document.querySelector(
-            ".student-record:has(h3)"
-        );
+        const studentName = detailsContent.querySelector("h3").textContent;
+        const studentInfo = detailsContent.querySelectorAll("p");
+
+        document.getElementById("edit-name").value = studentName;
+        document.getElementById("edit-id").value =
+            studentInfo[0].textContent.replace("Student ID: ", "");
+        document.getElementById("edit-program").value =
+            studentInfo[1].textContent.replace("Program: ", "");
+        document.getElementById("edit-gpa").value =
+            studentInfo[2].textContent.replace("GPA: ", "");
+        document.getElementById("edit-status").value =
+            studentInfo[3].textContent.replace("Status: ", "");
 
         editForm.style.display = "block";
     });
