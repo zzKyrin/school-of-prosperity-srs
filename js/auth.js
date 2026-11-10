@@ -234,3 +234,59 @@ document.addEventListener("DOMContentLoaded", function () {
         editForm.style.display = "block";
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const saveButton = document.getElementById("save-student");
+    const editForm = document.getElementById("edit-student-form");
+    const detailsContent = document.getElementById("student-details-content");
+
+    if (!saveButton || !editForm || !detailsContent) return;
+
+    saveButton.addEventListener("click", function () {
+        const oldStudentID = detailsContent.querySelectorAll("p")[0]
+            .textContent.replace("Student ID: ", "").trim();
+
+        const studentCard = Array.from(
+            document.querySelectorAll(".student-record")
+        ).find(function (card) {
+            return card.querySelectorAll("p")[0].textContent.includes(oldStudentID);
+        });
+
+        if (!studentCard) {
+            alert("Student record could not be found.");
+            return;
+        }
+
+        const name = document.getElementById("edit-name").value.trim();
+        const id = document.getElementById("edit-id").value.trim();
+        const program = document.getElementById("edit-program").value.trim();
+        const gpa = document.getElementById("edit-gpa").value;
+        const status = document.getElementById("edit-status").value;
+
+        if (!name || !id || !program || gpa === "" || Number(gpa) < 0 || Number(gpa) > 4) {
+            alert("Please enter valid information in all fields.");
+            return;
+        }
+
+        const cardInfo = studentCard.querySelectorAll("p");
+
+        studentCard.querySelector("h3").textContent = name;
+        cardInfo[0].textContent = "Student ID: " + id;
+        cardInfo[1].textContent = "Program: " + program;
+        cardInfo[2].textContent = "GPA: " + Number(gpa).toFixed(2);
+        cardInfo[3].textContent = "Status: " + status;
+
+        detailsContent.innerHTML = `
+            <h3>${name}</h3>
+            <p>Student ID: ${id}</p>
+            <p>Program: ${program}</p>
+            <p>GPA: ${Number(gpa).toFixed(2)}</p>
+            <p>Status: ${status}</p>
+        `;
+
+        editForm.style.display = "none";
+        alert("Student record updated successfully!");
+    });
+});
+
+
