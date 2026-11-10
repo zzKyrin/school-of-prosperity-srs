@@ -109,6 +109,30 @@
 <div class="dashboard-card" id="student-details" style="display: none;">
     <h2>Student Details</h2>
     <div id="student-details-content"></div>
+    
+<div id="edit-student-form" style="display: none;">
+    <h3>Edit Student Information</h3>
+
+    <label>Student Name</label>
+    <input type="text" id="edit-name">
+
+    <label>Student ID</label>
+    <input type="text" id="edit-id">
+
+    <label>Program</label>
+    <input type="text" id="edit-program">
+
+    <label>GPA</label>
+    <input type="number" id="edit-gpa" min="0" max="4" step="0.01">
+
+    <label>Status</label>
+    <select id="edit-status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="Graduated">Graduated</option>
+    </select>
+</div>
+
     <button type="button" id="edit-student">Edit Record</button>
     <button type="button" id="close-details">Close Details</button>
 </div>
