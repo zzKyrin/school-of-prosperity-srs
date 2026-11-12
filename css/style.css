@@ -1,369 +1,346 @@
-
 /* =================================
    SCHOOL OF PROSPERITY SRS
-   Main Website Styles
+   Main site styles
 ================================= */
 
-* {
-    box-sizing: border-box;
+:root {
+    --ink: #12263f;
+    --ink-2: #1f4068;
+    --gold: #c8963e;
+    --gold-soft: #f3e6cc;
+    --cream: #f7f4ee;
+    --paper: #ffffff;
+    --line: #e7e1d4;
+    --text: #1f2a37;
+    --muted: #6b7280;
+    --green: #2d7a5a;
+    --serif: ui-serif, "New York", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+    --shadow: 0 1px 2px rgba(18, 38, 63, .05), 0 8px 24px rgba(18, 38, 63, .07);
 }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f3f5f9;
-    color: #243047;
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Header */
+h1, h2, h3 { font-family: var(--serif); letter-spacing: -.01em; }
+
+/* ---------- Header ---------- */
 
 header {
-    background-color: #142b4a;
+    background:
+        radial-gradient(circle at 90% -20%, rgba(200, 150, 62, .28), transparent 45%),
+        linear-gradient(135deg, var(--ink), var(--ink-2));
     color: white;
-    padding: 22px 7%;
+    padding: 22px 7% 18px;
+    border-bottom: 3px solid var(--gold);
 }
 
 header h1 {
     margin: 0;
     font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-header p {
-    margin: 6px 0 0;
-    color: #d5deea;
+header h1::before {
+    content: "SoP";
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--gold);
+    color: var(--ink);
+    font: 800 14px var(--sans);
+    letter-spacing: .02em;
 }
 
-/* Main Content */
+header p { margin: 4px 0 0 52px; color: #b9c6d8; font-size: 14px; }
 
-main {
-    max-width: 1100px;
-    margin: 45px auto;
-    padding: 0 20px;
+/* ---------- Navigation ---------- */
+
+.dashboard-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 18px; }
+
+.dashboard-nav a {
+    color: #dbe5f2;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: background .15s, color .15s;
 }
 
-/* Welcome Section */
+.dashboard-nav a:hover { background: rgba(255, 255, 255, .12); color: white; }
+
+.dashboard-nav a:last-child { margin-left: auto; border: 1px solid rgba(255, 255, 255, .25); }
+
+/* ---------- Layout ---------- */
+
+main { max-width: 1100px; margin: 36px auto; padding: 0 20px; }
+
+main > section + section { margin-top: 24px; }
 
 .welcome {
-    background-color: white;
+    background: var(--paper);
     padding: 32px;
-    border-radius: 12px;
-    box-shadow: 0 3px 14px #142b4a12;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
 }
 
-.welcome h2 {
-    margin-top: 0;
-    color: #142b4a;
-}
+.welcome h2 { margin-top: 0; color: var(--ink); font-size: 26px; }
 
-/* Dashboard Cards */
+.welcome > p { color: var(--muted); }
+
+/* Hero banner on dashboards */
+#overview {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(200, 150, 62, .35), transparent 50%),
+        linear-gradient(135deg, var(--ink), var(--ink-2));
+    border: none;
+    color: white;
+}
+#overview h2 { color: white; font-size: 32px; }
+#overview p { color: #cbd7e6; margin: 6px 0; }
+#overview p:first-of-type { color: var(--gold-soft); font-weight: 600; }
+
+/* ---------- Cards ---------- */
 
 .cards {
     display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 18px;
     margin-top: 24px;
 }
 
-.card {
-    background-color: white;
+.card, .dashboard-card {
+    background: var(--paper);
     padding: 24px;
-    border-radius: 12px;
-    border: 1px solid #e3e8f0;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    box-shadow: var(--shadow);
+    transition: transform .15s, box-shadow .15s;
 }
 
-.card h3 {
-    color: #142b4a;
-}
+.card:hover, .dashboard-card:hover { transform: translateY(-2px); }
 
-.card p {
-    color: #66748a;
-    line-height: 1.5;
-}
+.card h3, .dashboard-card h3 { margin: 0 0 8px; color: var(--ink); font-size: 18px; }
 
-/* Buttons */
+.card p, .dashboard-card p { color: var(--muted); margin: 6px 0; }
 
-.button {
+/* ---------- Buttons & forms ---------- */
+
+.button, main button:not(.reg-btn) {
     display: inline-block;
-    background-color: #245ca6;
+    background: var(--ink);
     color: white;
-    padding: 11px 18px;
-    border-radius: 7px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font: 600 14px var(--sans);
     text-decoration: none;
+    cursor: pointer;
     margin-top: 10px;
+    transition: background .15s, transform .1s;
 }
 
-.button:hover {
-    background-color: #173f78;
+.button:hover, main button:not(.reg-btn):hover { background: var(--ink-2); }
+.button:active, main button:not(.reg-btn):active { transform: scale(.98); }
+
+#clear-search, #close-details { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+#clear-search:hover, #close-details:hover { background: var(--cream); }
+
+main input[type="text"], main input[type="number"], main select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #d9d2c3;
+    border-radius: 8px;
+    font: 15px var(--sans);
+    background: white;
+    color: var(--text);
 }
 
-/* Footer */
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #718096;
+main input:focus, main select:focus, .login-card input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200, 150, 62, .22);
 }
 
-/* Mobile Responsiveness */
+#student-search { margin: 16px 0 4px; }
+#clear-search { margin-top: 8px; }
 
-@media (max-width: 600px) {
-    header {
-        padding: 20px;
-    }
-
-    main {
-        margin: 25px auto;
-    }
-
-    .welcome {
-        padding: 22px;
-    }
+#edit-student-form label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
 }
 
+/* ---------- Footer ---------- */
+
+footer { text-align: center; padding: 34px; color: var(--muted); font-size: 13px; }
+
+/* ---------- Tables ---------- */
+
+.table-container { width: 100%; overflow-x: auto; margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; }
+
+.records-table { width: 100%; border-collapse: collapse; background: white; text-align: left; }
+
+.records-table th {
+    background: var(--cream);
+    color: var(--muted);
+    padding: 13px 16px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    border-bottom: 1px solid var(--line);
+}
+
+.records-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 14px; }
+.records-table tbody tr:hover { background: #fcfaf5; }
+.records-table tbody tr:last-child td { border-bottom: none; }
+
+/* ---------- Progress ---------- */
+
+.progress-info { display: flex; justify-content: space-between; align-items: center; margin: 24px 0 10px; }
+.progress-info strong { color: var(--ink); font-family: var(--serif); font-size: 20px; }
+
+.progress-bar { width: 100%; height: 14px; background: var(--line); border-radius: 20px; overflow: hidden; }
+
+.progress-fill {
+    display: block;
+    height: 14px;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold), var(--green));
+    border-radius: 20px;
+    transition: width .8s ease;
+}
+
+#academic-progress > p:last-child { margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+/* ---------- Student profile & details ---------- */
+
+#student-info p { margin: 10px 0; font-size: 15px; }
+#student-info p strong { color: var(--ink); display: inline-block; min-width: 150px; }
+
+#gpa-value { font: 700 40px var(--serif); color: var(--ink); margin: 4px 0; }
+
+#student-details { margin-top: 25px; border-left: 5px solid var(--green); border-top: 1px solid var(--line); grid-column: 1 / -1; }
+#student-details h3 { color: var(--green); }
 
 /* =================================
    LOGIN SCREEN
 ================================= */
 
-.login-card {
-    background-color: white;
-    max-width: 450px;
-    margin: 60px auto;
-    padding: 40px;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px #142b4a15;
-}
+.login-page { min-height: 100vh; }
 
-.login-card h2 {
-    color: #142b4a;
-    text-align: center;
-    margin-top: 0;
-    font-size: 26px;
-}
+.login-shell { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 100vh; }
 
-.login-card > p {
-    color: #66748a;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.login-card form {
+.login-hero {
+    position: relative;
     display: flex;
     flex-direction: column;
-}
-
-.login-card label {
-    font-weight: bold;
-    color: #243047;
-    margin-bottom: 8px;
-}
-
-.login-card input {
-    padding: 13px;
-    margin-bottom: 22px;
-    border: 1px solid #d5dce7;
-    border-radius: 7px;
-    font-size: 15px;
-}
-
-.login-card input:focus {
-    outline: none;
-    border-color: #245ca6;
-    box-shadow: 0 0 0 2px #245ca620;
-}
-
-.login-card .button {
-    width: 100%;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 5px;
-}
-
-.login-card .button:hover {
-    background-color: #173f78;
-}
-
-/* Mobile Login Layout */
-
-@media (max-width: 600px) {
-    .login-card {
-        margin: 30px auto;
-        padding: 25px;
-    }
-}
-
-/* =================================
-   STUDENT DASHBOARD NAVIGATION
-================================= */
-
-.dashboard-nav {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.dashboard-nav a {
+    justify-content: center;
+    padding: 64px 8%;
     color: white;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 0;
-}
-
-.dashboard-nav a:hover {
-    color: #a9cfff;
-    text-decoration: underline;
-}
-
-/* Mobile Navigation */
-
-@media (max-width: 600px) {
-    .dashboard-nav {
-        gap: 15px;
-    }
-
-    .dashboard-nav a {
-        font-size: 13px;
-    }
-}
-
-/* =================================
-   ACADEMIC RECORDS TABLE
-================================= */
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 20px;
-}
-
-.records-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    text-align: left;
-}
-
-.records-table th {
-    background-color: #142b4a;
-    color: white;
-    padding: 15px;
-    font-size: 14px;
-}
-
-.records-table td {
-    padding: 15px;
-    border-bottom: 1px solid #e3e8f0;
-    color: #243047;
-    font-size: 14px;
-}
-
-.records-table tbody tr:hover {
-    background-color: #f3f5f9;
-}
-
-.records-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Mobile Table */
-
-@media (max-width: 600px) {
-    .records-table {
-        min-width: 600px;
-    }
-}
-
-/* =================================
-   ACADEMIC PROGRESS
-================================= */
-
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    color: #243047;
-}
-
-.progress-info strong {
-    color: #142b4a;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 14px;
-    background-color: #e3e8f0;
-    border-radius: 20px;
+    background:
+        radial-gradient(circle at 15% 85%, rgba(200, 150, 62, .35), transparent 40%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, .035) 0 2px, transparent 2px 26px),
+        linear-gradient(160deg, var(--ink), var(--ink-2));
     overflow: hidden;
 }
 
-
-.progress-fill {
-    display: block;
-    width: 10%;
-    min-width: 10%;
-    height: 14px;
-    background-color: #2d8a62;
-    border-radius: 20px;
+.login-hero::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -140px;
+    top: -140px;
+    border: 60px solid rgba(200, 150, 62, .18);
+    border-radius: 50%;
 }
 
+.hero-mark {
+    width: 52px; height: 52px; display: grid; place-items: center;
+    border-radius: 13px; background: var(--gold); color: var(--ink);
+    font: 800 17px var(--sans); margin-bottom: 28px;
 }
 
-#academic-progress > p:last-child {
-    margin-top: 12px;
-    color: #64748b;
-    font-size: 14px;
+.login-hero h1 { font-size: clamp(34px, 4.5vw, 54px); line-height: 1.05; margin: 0 0 14px; }
+.login-hero .tagline { font-size: 18px; color: #c4d1e3; max-width: 420px; margin: 0 0 36px; }
+
+.hero-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.hero-list li { display: flex; align-items: center; gap: 12px; color: #e4ecf6; font-size: 15px; }
+.hero-list li::before {
+    content: "\2713";
+    display: grid; place-items: center; flex: none;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(200, 150, 62, .25); color: var(--gold-soft); font-size: 12px; font-weight: bold;
 }
 
-/* =================================
-   STUDENT PROFILE DETAILS
-================================= */
+.login-panel { display: grid; place-items: center; padding: 40px 24px; background: var(--cream); }
 
-#student-info p {
-    margin: 12px 0;
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.6;
-}
+.login-card { width: 100%; max-width: 400px; background: none; padding: 0; box-shadow: none; }
 
-#student-info p strong {
-    color: #142b4a;
-    display: inline-block;
-    min-width: 155px;
-}
+.login-card h2 { font-size: 32px; color: var(--ink); margin: 0 0 6px; }
+.login-card > p { color: var(--muted); margin: 0 0 28px; }
 
-/* =================================
-   STUDENT DETAILS PANEL
-================================= */
+.login-card form { display: flex; flex-direction: column; }
+.login-card label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 7px; }
 
-#student-details {
-    margin-top: 25px;
-    border-left: 5px solid #2d8a62;
-    padding: 25px;
-}
-
-#student-details h2 {
-    color: #142b4a;
+.login-card input {
+    padding: 14px;
     margin-bottom: 20px;
+    border: 1px solid #d9d2c3;
+    border-radius: 10px;
+    font: 15px var(--sans);
+    background: white;
 }
 
-#student-details h3 {
-    color: #2d8a62;
-    margin-bottom: 15px;
+.login-card .button { width: 100%; padding: 14px; font-size: 16px; margin-top: 4px; }
+
+.demo-note {
+    margin-top: 26px;
+    padding: 14px 16px;
+    background: var(--gold-soft);
+    border-radius: 10px;
+    font-size: 13px;
+    color: #6b4c12;
+}
+.demo-note strong { display: block; margin-bottom: 4px; }
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 800px) {
+    .login-shell { grid-template-columns: 1fr; }
+    .login-hero { padding: 40px 28px; }
+    .hero-list { display: none; }
+    .login-hero .tagline { margin-bottom: 0; }
 }
 
-#student-details p {
-    color: #475569;
-    margin: 10px 0;
-    font-size: 15px;
-    line-height: 1.5;
+@media (max-width: 600px) {
+    header { padding: 20px 20px 16px; }
+    main { margin: 24px auto; }
+    .welcome { padding: 22px; }
+    .dashboard-nav a:last-child { margin-left: 0; }
+    .records-table { min-width: 600px; }
 }
 
-#student-details button {
-    margin-top: 15px;
-}
+.login-card > p.login-error, .login-error { background: #fbe6e6; color: #a12626; padding: 12px 14px; border-radius: 10px; font-size: 14px; margin: 0 0 18px; }
+.login-error[hidden] { display: none; }
+.reset-link { display: inline-block; margin-top: 8px; font-size: 12px; color: #6b4c12; }

@@ -1,185 +1,75 @@
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-role="student">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
     <title>Student Dashboard | School of Prosperity</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/guard.js"></script>
 </head>
-
 <body>
-
-
 <header>
     <h1>School of Prosperity</h1>
     <p>Student Records System</p>
-
     <nav class="dashboard-nav">
-        <a href="#overview">Overview</a>
-        <a href="#courses">My Courses</a>
-        <a href="#student-info">My Information</a>
-        <a href="#academic-records">Academic Records</a>
+        <a href="#home">Main Menu</a>
+        <a href="register.html#available">Available Classes</a>
+        <a href="register.html#schedule">My Schedule</a>
+        <a href="#grades">My Grades</a>
+        <a href="#profile">My Information</a>
         <a href="index.html">Sign Out</a>
     </nav>
 </header>
 
-
-    <main>
-
-        <section class="welcome" id="overview">
+<main>
+    <div class="view" id="home">
+        <section class="welcome banner">
             <h2>Student Dashboard</h2>
             <p>Welcome back, Jordan Williams!</p>
-            <p>Here you can view your academic information,
-                courses, and student records.</p>
+            <p>Your classes, grades, and progress in one place.</p>
         </section>
-
         <section class="cards">
-
-            <div class="card" id="student-info">
-                <h3>Student Information</h3>
-                <p><strong>Student ID:</strong> 100245</p>
-                <p><strong>Program:</strong> Business Administration</p>
-                <p><strong>Status:</strong> Active</p>
-                <p><strong>Email:</strong> jordan.williams@example.com</p>
-                <p><strong>Enrollment:</strong> Fall 2024</p>
-                <p><strong>Academic Level:</strong> Undergraduate</p>
-                <p><strong>Expected Graduation:</strong> Spring 2028</p>
-
-            </div>
-
-            <div class="card">
-                <h3>Current GPA</h3>
-                <p id="gpa-value">Calculating...</p>
-                <p>Good academic standing</p>
-            </div>
-
-            <div class="card">
-                <h3>Enrolled Courses</h3>
-                <p>4 courses currently enrolled</p>
-            </div>
-
+            <div class="card"><h3>Current GPA</h3><p id="gpa-value">...</p><p id="gpa-note"></p></div>
+            <div class="card"><h3>Courses Completed</h3><p id="done-count"></p><a class="button" href="#grades">View grades</a></div>
+            <div class="card"><h3>Spring 2027 Registration</h3><p id="reg-count"></p><a class="button" href="register.html#available">Register for classes</a></div>
         </section>
-
-        <section class="welcome" id="courses">
-            <h2>My Courses</h2>
-
-            <div class="cards">
-
-                <div class="card">
-                    <h3>Database Systems</h3>
-                    <p>Course: INSY 3305</p>
-                    <p>Grade: A</p>
-                </div>
-
-                <div class="card">
-                    <h3>Systems Analysis</h3>
-                    <p>Course: INSY 4305</p>
-                    <p>Grade: B</p>
-                </div>
-
-                <div class="card">
-                    <h3>Data Analytics</h3>
-                    <p>Course: INSY 4306</p>
-                    <p>Grade: A</p>
-                </div>
-
-                <div class="card">
-                    <h3>Business Management</h3>
-                    <p>Course: MANA 2268</p>
-                    <p>Grade: B</p>
-                </div>
-
-            </div>
+        <section class="welcome" id="academic-progress">
+            <h2>Academic Progress</h2>
+            <p>Track your progress toward completing your degree.</p>
+            <div class="progress-info"><span>Credits Completed</span><strong id="credits-completed">...</strong></div>
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+            <p id="progress-percentage"></p>
         </section>
-<!-- Academic Records -->
-
-<section class="welcome" id="academic-records">
-
-    <h2>Academic Records</h2>
-
-    <p>View your academic performance and course grades.</p>
-
-    <div class="table-container">
-
-        <table class="records-table">
-
-            <thead>
-                <tr>
-                    <th>Course</th>
-                    <th>Course Code</th>
-                    <th>Credits</th>
-                    <th>Grade</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>Database Systems</td>
-                    <td>INSY 3305</td>
-                    <td>3</td>
-                    <td>A</td>
-                    <td>Completed</td>
-                </tr>
-
-                <tr>
-                    <td>Systems Analysis</td>
-                    <td>INSY 4305</td>
-                    <td>3</td>
-                    <td>B</td>
-                    <td>Completed</td>
-                </tr>
-
-                <tr>
-                    <td>Data Analytics</td>
-                    <td>INSY 4306</td>
-                    <td>3</td>
-                    <td>A</td>
-                    <td>Completed</td>
-                </tr>
-
-                <tr>
-                    <td>Business Management</td>
-                    <td>MANA 2268</td>
-                    <td>3</td>
-                    <td>B</td>
-                    <td>Completed</td>
-                </tr>
-            </tbody>
-
-        </table>
-
     </div>
 
-</section>
-        
-<section class="welcome" id="academic-progress">
-    <h2>Academic Progress</h2>
-    <p>Track your progress toward completing your degree.</p>
-
-    <div class="progress-info">
-        <span>Credits Completed</span>
-        <strong id="credits-completed">Calculating...</strong>
+    <div class="view" id="grades" hidden>
+        <section class="welcome" id="academic-records">
+            <h2>My Grades</h2>
+            <p>Final grades appear here as soon as staff post them.</p>
+            <div class="table-container">
+                <table class="records-table">
+                    <thead><tr><th>Term</th><th>Course</th><th>Code</th><th>Credits</th><th>Grade</th><th>Status</th></tr></thead>
+                    <tbody id="grade-rows"></tbody>
+                </table>
+            </div>
+            <button type="button" data-toast="Transcript request sent to the Registrar (demo)">Request transcript</button>
+        </section>
     </div>
 
-    <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
+    <div class="view" id="profile" hidden>
+        <section class="welcome">
+            <h2>My Information</h2>
+            <div class="cards"><div class="card" id="student-info"></div></div>
+            <button type="button" data-toast="Update request sent to staff (demo)">Request an update</button>
+        </section>
     </div>
+</main>
 
-    <p id="progress-percentage">Calculating...</p>
-</section>
-
-        <p>
-            <a href="index.html" class="button">Sign Out</a>
-        </p>
-
-    </main>
-
-    <footer>
-        School of Prosperity | Student Records System
-    </footer>
-<script src="js/auth.js"></script>
+<footer>School of Prosperity | Student Records System</footer>
+<script src="js/data.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/student.js"></script>
 </body>
 </html>

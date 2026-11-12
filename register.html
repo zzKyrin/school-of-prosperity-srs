@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-role="student">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>Class Registration | School of Prosperity</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/guard.js"></script>
+</head>
+<body>
+<header>
+    <h1>School of Prosperity</h1>
+    <p>Student Records System</p>
+    <nav class="dashboard-nav">
+        <a href="student-dashboard.html">Main Menu</a>
+        <a href="#available">Available Classes</a>
+        <a href="#schedule">My Schedule</a>
+        <a href="student-dashboard.html#grades">My Grades</a>
+        <a href="index.html">Sign Out</a>
+    </nav>
+</header>
+
+<main>
+    <section class="welcome">
+        <h2>Class Registration &mdash; Spring 2027</h2>
+        <div class="reg-summary">
+            <div class="stat"><span id="stat-credits">0</span><small>Credits registered</small></div>
+            <div class="stat"><span id="stat-classes">0</span><small>Classes registered</small></div>
+            <div class="stat"><span id="stat-remaining">15</span><small>Credits remaining (max 15)</small></div>
+        </div>
+        <div id="reg-message" role="status" aria-live="polite" class="reg-message" hidden></div>
+    </section>
+
+    <div class="view" id="available">
+        <section class="welcome reg-block">
+            <h2>Available Classes</h2>
+            <p>Click a class code for details, or register directly.</p>
+            <div class="filters">
+                <input type="text" id="cat-search" placeholder="Search by code, title, or instructor...">
+                <select id="cat-modality">
+                    <option value="">All formats</option><option value="Online">Online</option><option value="Face-to-Face">Face-to-Face</option>
+                </select>
+                <label class="check"><input type="checkbox" id="cat-open"> Open seats only</label>
+            </div>
+            <div class="table-container">
+                <table class="records-table">
+                    <thead><tr><th>Class</th><th>Meets</th><th>Format</th><th>Instructor</th><th>Seats</th><th>Prerequisite</th><th></th></tr></thead>
+                    <tbody id="catalog-body"></tbody>
+                </table>
+            </div>
+            <p id="cat-empty" hidden>No classes match your filters.</p>
+        </section>
+    </div>
+
+    <div class="view" id="schedule" hidden>
+        <section class="welcome reg-block">
+            <h2>My Schedule</h2>
+            <div class="chips" id="view-toggle">
+                <button type="button" class="chip on" data-vw="cal">Week view</button>
+                <button type="button" class="chip" data-vw="list">List view</button>
+            </div>
+            <div id="cal-view"><div class="cal-wrap" id="calendar"></div><p id="async-note" class="muted"></p></div>
+            <div id="list-view" hidden>
+                <div class="table-container">
+                    <table class="records-table">
+                        <thead><tr><th>Class</th><th>Meets</th><th>Format</th><th>Credits</th><th></th></tr></thead>
+                        <tbody id="schedule-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>School of Prosperity | Student Records System</footer>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Class details"></aside>
+
+<script src="js/data.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/registration.js"></script>
+</body>
+</html>

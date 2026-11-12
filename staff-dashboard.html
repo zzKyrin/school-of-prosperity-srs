@@ -1,151 +1,108 @@
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-role="staff">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
     <title>Staff Dashboard | School of Prosperity</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/guard.js"></script>
 </head>
-
 <body>
+<header>
+    <h1>School of Prosperity</h1>
+    <p>Student Records System &mdash; Staff Portal</p>
+    <nav class="dashboard-nav">
+        <a href="#home">Main Menu</a>
+        <a href="#students">Student Records</a>
+        <a href="#courses">Course Records</a>
+        <a href="#classes">Class Records</a>
+        <a href="#grades">Manage Grades</a>
+        <a href="index.html">Sign Out</a>
+    </nav>
+</header>
 
-    <header>
-        <h1>School of Prosperity</h1>
-        <p>Student Records System — Staff Portal</p>
-
-        <nav class="dashboard-nav">
-            <a href="#overview">Overview</a>
-            <a href="#students">Student Records</a>
-            <a href="index.html">Sign Out</a>
-        </nav>
-    </header>
-
-    <main>
-
-        <section class="welcome" id="overview">
+<main>
+    <div class="view" id="home">
+        <section class="welcome banner">
             <h2>Staff Dashboard</h2>
             <p>Welcome back, Alex Morgan!</p>
-            <p>Manage student information and review academic records.</p>
+            <p>Here is what is happening at the school today.</p>
         </section>
+        <section class="tiles" id="tiles"></section>
+        <div class="two-col">
+            <section class="welcome"><h2>Students by program</h2><div id="program-bars"></div></section>
+            <section class="welcome"><h2>Needs attention</h2><p class="muted">Click an item to open it.</p><ul class="list" id="attention"></ul></section>
+        </div>
+        <section class="welcome"><h2>Recent activity</h2><ul class="list" id="activity"></ul></section>
+    </div>
 
-        <section class="cards">
-
-            <div class="card">
-                <h3>Total Students</h3>
-                <p>125</p>
-            </div>
-
-            <div class="card">
-                <h3>Active Enrollments</h3>
-                <p>118</p>
-            </div>
-
-            <div class="card">
-                <h3>Academic Programs</h3>
-                <p>6</p>
-            </div>
-
-        </section>
-
-        <section class="welcome" id="students">
+    <div class="view" id="students" hidden>
+        <section class="welcome">
             <h2>Student Records</h2>
-            
-<input
-    type="text"
-    id="student-search"
-    placeholder="Search students by name or ID..."
->
-            <button type="button" id="clear-search">Clear Search</button>
-            
-<p id="no-results" style="display: none;">
-    No students found. Try another name or ID.
-</p>
-
-
-            <p>Sample student information for demonstration purposes.</p>
-
-            <div class="cards">
-
-                <div class="dashboard-card student-record">
-                    <h3>Jordan Williams</h3>
-                    <p>Student ID: 100245</p>
-                    <p>Program: Business Administration</p>
-                    <p>GPA: 3.65</p>
-                    <p>Status: Active</p>
-                    
-<button type="button" class="view-student" data-student="Jordan Williams">
-    View Details
-</button>
-
+            <p>Search, sort, and click a student to view or edit their record.</p>
+            <div class="toolbar">
+                <input type="text" id="student-search" placeholder="Search by name, ID, or program...">
+                <div class="chips" id="status-chips">
+                    <button type="button" class="chip on" data-f="All">All</button>
+                    <button type="button" class="chip" data-f="Active">Active</button>
+                    <button type="button" class="chip" data-f="Inactive">Inactive</button>
+                    <button type="button" class="chip" data-f="Graduated">Graduated</button>
                 </div>
-
-                <div class="dashboard-card student-record">
-                    <h3>Taylor Johnson</h3>
-                    <p>Student ID: 100246</p>
-                    <p>Program: Information Systems</p>
-                    <p>GPA: 3.42</p>
-                    <p>Status: Active</p>
-                    
-<button type="button" class="view-student" data-student="Taylor Johnson">
-    View Details
-</button>
-
-                </div>
-
-                <div class="dashboard-card student-record">
-                    <h3>Casey Williams</h3>
-                    <p>Student ID: 100247</p>
-                    <p>Program: Accounting</p>
-                    <p>GPA: 3.18</p>
-                    <p>Status: Active</p>
-                                         
-<button type="button" class="view-student" data-student="Casey Williams">
-    View Details
-</button>                        
-                </div>
-
-<div class="dashboard-card" id="student-details" style="display: none;">
-    <h2>Student Details</h2>
-    <div id="student-details-content"></div>
-    
-<div id="edit-student-form" style="display: none;">
-    <h3>Edit Student Information</h3>
-
-    <label>Student Name</label>
-    <input type="text" id="edit-name">
-
-    <label>Student ID</label>
-    <input type="text" id="edit-id">
-
-    <label>Program</label>
-    <input type="text" id="edit-program">
-
-    <label>GPA</label>
-    <input type="number" id="edit-gpa" min="0" max="4" step="0.01">
-
-    <label>Status</label>
-    <select id="edit-status">
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-        <option value="Graduated">Graduated</option>
-    </select>
-    <button type="button" id="save-student">Save Changes</button>
-</div>
-
-    <button type="button" id="edit-student">Edit Record</button>
-    <button type="button" id="close-details">Close Details</button>
-</div>
-
+                <button type="button" id="add-student" style="margin:0">+ Add student</button>
             </div>
+            <div class="table-container">
+                <table class="records-table">
+                    <thead id="student-head"><tr>
+                        <th class="sortable" data-sort="name">Student</th><th class="sortable" data-sort="program">Program</th><th class="sortable" data-sort="level">Level</th><th class="sortable" data-sort="gpa">GPA</th><th class="sortable" data-sort="status">Status</th>
+                    </tr></thead>
+                    <tbody id="student-rows"></tbody>
+                </table>
+            </div>
+            <p id="no-results" hidden>No students found. Try another name or ID.</p>
         </section>
+    </div>
 
-    </main>
+    <div class="view" id="courses" hidden>
+        <section class="welcome">
+            <h2>Course Records</h2>
+            <p>The course list. Click a course to view or edit it.</p>
+            <div class="table-container"><table class="records-table">
+                <thead><tr><th>Course</th><th>Credits</th><th>Prerequisite</th></tr></thead><tbody id="course-rows"></tbody>
+            </table></div>
+        </section>
+    </div>
 
-    <footer>
-        School of Prosperity | Staff Portal
-    </footer>
-<script src="js/auth.js"></script>
+    <div class="view" id="classes" hidden>
+        <section class="welcome">
+            <h2>Class Records</h2>
+            <p>Spring 2027 classes. Change seat capacity or open a roster to add or drop students (with override).</p>
+            <div class="table-container"><table class="records-table">
+                <thead><tr><th>Class</th><th>Meets</th><th>Format</th><th>Instructor</th><th>Seats</th><th></th></tr></thead><tbody id="class-rows"></tbody>
+            </table></div>
+        </section>
+    </div>
+
+    <div class="view" id="grades" hidden>
+        <section class="welcome">
+            <h2>Manage Grades</h2>
+            <p>Choose a class, enter each student's final grade, and save. Students see posted grades right away.</p>
+            <div class="toolbar"><select id="grade-class" style="flex:1 1 320px;width:auto"></select><span class="muted" id="grade-summary"></span></div>
+            <div class="table-container"><table class="records-table">
+                <thead><tr><th>Student</th><th>Final grade</th></tr></thead><tbody id="grade-rows"></tbody>
+            </table></div>
+            <button type="button" id="save-grades">Save grades</button>
+        </section>
+    </div>
+</main>
+
+<footer>School of Prosperity | Staff Portal</footer>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Details"></aside>
+
+<script src="js/data.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/staff.js"></script>
 </body>
 </html>
